@@ -65,11 +65,9 @@ type M1 struct {
 
 func (x *M1) Reset() {
 	*x = M1{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *M1) String() string {
@@ -80,7 +78,7 @@ func (*M1) ProtoMessage() {}
 
 func (x *M1) ProtoReflect() protoreflect.Message {
 	mi := &file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -105,11 +103,9 @@ type M1_1 struct {
 
 func (x *M1_1) Reset() {
 	*x = M1_1{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *M1_1) String() string {
@@ -120,7 +116,7 @@ func (*M1_1) ProtoMessage() {}
 
 func (x *M1_1) ProtoReflect() protoreflect.Message {
 	mi := &file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -174,7 +170,7 @@ func file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_rawDescGZIP() []b
 
 var file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_goTypes = []interface{}{
+var file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_goTypes = []any{
 	(E1)(0),      // 0: test.a.E1
 	(*M1)(nil),   // 1: test.a.M1
 	(*M1_1)(nil), // 2: test.a.M1_1
@@ -192,32 +188,6 @@ func init() { file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_init() }
 func file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_init() {
 	if File_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto != nil {
 		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*M1); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_cmd_protoc_gen_go_testdata_imports_test_a_1_m1_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*M1_1); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

@@ -24,11 +24,9 @@ type WeakImportMessage1 struct {
 
 func (x *WeakImportMessage1) Reset() {
 	*x = WeakImportMessage1{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_testprotos_test_weak1_test_weak_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_internal_testprotos_test_weak1_test_weak_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *WeakImportMessage1) String() string {
@@ -39,7 +37,7 @@ func (*WeakImportMessage1) ProtoMessage() {}
 
 func (x *WeakImportMessage1) ProtoReflect() protoreflect.Message {
 	mi := &file_internal_testprotos_test_weak1_test_weak_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -90,7 +88,7 @@ func file_internal_testprotos_test_weak1_test_weak_proto_rawDescGZIP() []byte {
 }
 
 var file_internal_testprotos_test_weak1_test_weak_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_internal_testprotos_test_weak1_test_weak_proto_goTypes = []interface{}{
+var file_internal_testprotos_test_weak1_test_weak_proto_goTypes = []any{
 	(*WeakImportMessage1)(nil), // 0: goproto.proto.test.weak.WeakImportMessage1
 }
 var file_internal_testprotos_test_weak1_test_weak_proto_depIdxs = []int32{
@@ -105,20 +103,6 @@ func init() { file_internal_testprotos_test_weak1_test_weak_proto_init() }
 func file_internal_testprotos_test_weak1_test_weak_proto_init() {
 	if File_internal_testprotos_test_weak1_test_weak_proto != nil {
 		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_internal_testprotos_test_weak1_test_weak_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*WeakImportMessage1); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

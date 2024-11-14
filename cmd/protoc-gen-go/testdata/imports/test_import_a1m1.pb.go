@@ -25,11 +25,9 @@ type A1M1 struct {
 
 func (x *A1M1) Reset() {
 	*x = A1M1{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *A1M1) String() string {
@@ -40,7 +38,7 @@ func (*A1M1) ProtoMessage() {}
 
 func (x *A1M1) ProtoReflect() protoreflect.Message {
 	mi := &file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -95,7 +93,7 @@ func file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_rawDescGZIP(
 }
 
 var file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_goTypes = []interface{}{
+var file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_goTypes = []any{
 	(*A1M1)(nil),        // 0: test.A1M1
 	(*test_a_1.M1)(nil), // 1: test.a.M1
 }
@@ -112,20 +110,6 @@ func init() { file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_ini
 func file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_init() {
 	if File_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto != nil {
 		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_cmd_protoc_gen_go_testdata_imports_test_import_a1m1_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*A1M1); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

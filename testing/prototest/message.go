@@ -231,7 +231,7 @@ func testField(t testing.TB, m protoreflect.Message, fd protoreflect.FieldDescri
 		m.Set(fd, v)
 		wantHas := true
 		if n == 0 {
-			if fd.Syntax() == protoreflect.Proto3 && fd.Message() == nil {
+			if !fd.HasPresence() {
 				wantHas = false
 			}
 			if fd.IsExtension() {
@@ -244,7 +244,7 @@ func testField(t testing.TB, m protoreflect.Message, fd protoreflect.FieldDescri
 				wantHas = true
 			}
 		}
-		if fd.Syntax() == protoreflect.Proto3 && fd.Cardinality() != protoreflect.Repeated && fd.ContainingOneof() == nil && fd.Kind() == protoreflect.EnumKind && v.Enum() == 0 {
+		if !fd.HasPresence() && fd.Cardinality() != protoreflect.Repeated && fd.ContainingOneof() == nil && fd.Kind() == protoreflect.EnumKind && v.Enum() == 0 {
 			wantHas = false
 		}
 		if got, want := m.Has(fd), wantHas; got != want {
@@ -421,7 +421,7 @@ func testFieldMap(t testing.TB, m protoreflect.Message, fd protoreflect.FieldDes
 	}
 }
 
-type testMap map[interface{}]protoreflect.Value
+type testMap map[any]protoreflect.Value
 
 func (m testMap) Get(k protoreflect.MapKey) protoreflect.Value     { return m[k.Interface()] }
 func (m testMap) Set(k protoreflect.MapKey, v protoreflect.Value)  { m[k.Interface()] = v }

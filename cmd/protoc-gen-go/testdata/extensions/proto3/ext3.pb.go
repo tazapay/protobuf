@@ -66,11 +66,9 @@ type Message struct {
 
 func (x *Message) Reset() {
 	*x = Message{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *Message) String() string {
@@ -81,7 +79,7 @@ func (*Message) ProtoMessage() {}
 
 func (x *Message) ProtoReflect() protoreflect.Message {
 	mi := &file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -238,7 +236,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]bool)(nil),
 		Field:         2001,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_bool",
-		Tag:           "varint,2001,rep,name=repeated_extension_bool",
+		Tag:           "varint,2001,rep,packed,name=repeated_extension_bool",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -246,7 +244,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]Enum)(nil),
 		Field:         2002,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_enum",
-		Tag:           "varint,2002,rep,name=repeated_extension_enum,enum=goproto.protoc.extension.proto3.Enum",
+		Tag:           "varint,2002,rep,packed,name=repeated_extension_enum,enum=goproto.protoc.extension.proto3.Enum",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -254,7 +252,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]int32)(nil),
 		Field:         2003,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_int32",
-		Tag:           "varint,2003,rep,name=repeated_extension_int32",
+		Tag:           "varint,2003,rep,packed,name=repeated_extension_int32",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -262,7 +260,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]int32)(nil),
 		Field:         2004,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_sint32",
-		Tag:           "zigzag32,2004,rep,name=repeated_extension_sint32",
+		Tag:           "zigzag32,2004,rep,packed,name=repeated_extension_sint32",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -270,7 +268,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]uint32)(nil),
 		Field:         2005,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_uint32",
-		Tag:           "varint,2005,rep,name=repeated_extension_uint32",
+		Tag:           "varint,2005,rep,packed,name=repeated_extension_uint32",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -278,7 +276,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]int64)(nil),
 		Field:         2006,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_int64",
-		Tag:           "varint,2006,rep,name=repeated_extension_int64",
+		Tag:           "varint,2006,rep,packed,name=repeated_extension_int64",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -286,7 +284,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]int64)(nil),
 		Field:         2007,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_sint64",
-		Tag:           "zigzag64,2007,rep,name=repeated_extension_sint64",
+		Tag:           "zigzag64,2007,rep,packed,name=repeated_extension_sint64",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -294,7 +292,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]uint64)(nil),
 		Field:         2008,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_uint64",
-		Tag:           "varint,2008,rep,name=repeated_extension_uint64",
+		Tag:           "varint,2008,rep,packed,name=repeated_extension_uint64",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -302,7 +300,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]int32)(nil),
 		Field:         2009,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_sfixed32",
-		Tag:           "fixed32,2009,rep,name=repeated_extension_sfixed32",
+		Tag:           "fixed32,2009,rep,packed,name=repeated_extension_sfixed32",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -310,7 +308,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]uint32)(nil),
 		Field:         2010,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_fixed32",
-		Tag:           "fixed32,2010,rep,name=repeated_extension_fixed32",
+		Tag:           "fixed32,2010,rep,packed,name=repeated_extension_fixed32",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -318,7 +316,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]float32)(nil),
 		Field:         2011,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_float",
-		Tag:           "fixed32,2011,rep,name=repeated_extension_float",
+		Tag:           "fixed32,2011,rep,packed,name=repeated_extension_float",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -326,7 +324,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]int64)(nil),
 		Field:         2012,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_sfixed64",
-		Tag:           "fixed64,2012,rep,name=repeated_extension_sfixed64",
+		Tag:           "fixed64,2012,rep,packed,name=repeated_extension_sfixed64",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -334,7 +332,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]uint64)(nil),
 		Field:         2013,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_fixed64",
-		Tag:           "fixed64,2013,rep,name=repeated_extension_fixed64",
+		Tag:           "fixed64,2013,rep,packed,name=repeated_extension_fixed64",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -342,7 +340,7 @@ var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_extTypes = []pr
 		ExtensionType: ([]float64)(nil),
 		Field:         2014,
 		Name:          "goproto.protoc.extension.proto3.repeated_extension_double",
-		Tag:           "fixed64,2014,rep,name=repeated_extension_double",
+		Tag:           "fixed64,2014,rep,packed,name=repeated_extension_double",
 		Filename:      "cmd/protoc-gen-go/testdata/extensions/proto3/ext3.proto",
 	},
 	{
@@ -669,7 +667,7 @@ func file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_rawDescGZIP() 
 
 var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_goTypes = []interface{}{
+var file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_goTypes = []any{
 	(Enum)(0),                           // 0: goproto.protoc.extension.proto3.Enum
 	(*Message)(nil),                     // 1: goproto.protoc.extension.proto3.Message
 	(*descriptorpb.MessageOptions)(nil), // 2: google.protobuf.MessageOptions
@@ -724,20 +722,6 @@ func init() { file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_init(
 func file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_init() {
 	if File_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto != nil {
 		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_cmd_protoc_gen_go_testdata_extensions_proto3_ext3_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Message); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

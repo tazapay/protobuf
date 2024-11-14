@@ -47,11 +47,9 @@ type Legacy struct {
 
 func (x *Legacy) Reset() {
 	*x = Legacy{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_testprotos_legacy_legacy_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_internal_testprotos_legacy_legacy_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *Legacy) String() string {
@@ -62,7 +60,7 @@ func (*Legacy) ProtoMessage() {}
 
 func (x *Legacy) ProtoReflect() protoreflect.Message {
 	mi := &file_internal_testprotos_legacy_legacy_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -281,7 +279,7 @@ func file_internal_testprotos_legacy_legacy_proto_rawDescGZIP() []byte {
 }
 
 var file_internal_testprotos_legacy_legacy_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_internal_testprotos_legacy_legacy_proto_goTypes = []interface{}{
+var file_internal_testprotos_legacy_legacy_proto_goTypes = []any{
 	(*Legacy)(nil),                           // 0: google.golang.org.Legacy
 	(*proto2_20160225_2fc053c5.Message)(nil), // 1: google.golang.org.proto2_20160225.Message
 	(*proto3_20160225_2fc053c5.Message)(nil), // 2: google.golang.org.proto3_20160225.Message
@@ -320,20 +318,6 @@ func init() { file_internal_testprotos_legacy_legacy_proto_init() }
 func file_internal_testprotos_legacy_legacy_proto_init() {
 	if File_internal_testprotos_legacy_legacy_proto != nil {
 		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_internal_testprotos_legacy_legacy_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Legacy); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

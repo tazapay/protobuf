@@ -12,6 +12,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 
+	"google.golang.org/protobuf/internal/test/race"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/runtime/protoimpl"
@@ -20,6 +21,7 @@ import (
 	legacy1pb "google.golang.org/protobuf/internal/testprotos/legacy/proto2_20160225_2fc053c5"
 	testpb "google.golang.org/protobuf/internal/testprotos/test"
 	test3pb "google.golang.org/protobuf/internal/testprotos/test3"
+	testeditionspb "google.golang.org/protobuf/internal/testprotos/testeditions"
 	descpb "google.golang.org/protobuf/types/descriptorpb"
 )
 
@@ -27,8 +29,8 @@ func TestExtensionFuncs(t *testing.T) {
 	for _, test := range []struct {
 		message     proto.Message
 		ext         protoreflect.ExtensionType
-		wantDefault interface{}
-		value       interface{}
+		wantDefault any
+		value       any
 	}{
 		{
 			message:     &testpb.TestAllExtensions{},
@@ -43,12 +45,39 @@ func TestExtensionFuncs(t *testing.T) {
 			value:       []string{"a", "b", "c"},
 		},
 		{
+			message:     &testeditionspb.TestAllExtensions{},
+			ext:         testeditionspb.E_OptionalInt32,
+			wantDefault: int32(0),
+			value:       int32(1),
+		},
+		{
+			message:     &testeditionspb.TestAllExtensions{},
+			ext:         testeditionspb.E_RepeatedString,
+			wantDefault: ([]string)(nil),
+			value:       []string{"a", "b", "c"},
+		},
+		{
 			message:     protoimpl.X.MessageOf(&legacy1pb.Message{}).Interface(),
 			ext:         legacy1pb.E_Message_ExtensionOptionalBool,
 			wantDefault: false,
 			value:       true,
 		},
+		{
+			message:     &descpb.MessageOptions{},
+			ext:         test3pb.E_OptionalInt32Ext,
+			wantDefault: int32(0),
+			value:       int32(1),
+		},
+		{
+			message:     &descpb.MessageOptions{},
+			ext:         test3pb.E_RepeatedInt32Ext,
+			wantDefault: ([]int32)(nil),
+			value:       []int32{1, 2, 3},
+		},
 	} {
+		if test.ext.TypeDescriptor().HasPresence() == test.ext.TypeDescriptor().IsList() {
+			t.Errorf("Extension %v has presence = %v, want %v", test.ext.TypeDescriptor().FullName(), test.ext.TypeDescriptor().HasPresence(), !test.ext.TypeDescriptor().IsList())
+		}
 		desc := fmt.Sprintf("Extension %v, value %v", test.ext.TypeDescriptor().FullName(), test.value)
 		if proto.HasExtension(test.message, test.ext) {
 			t.Errorf("%v:\nbefore setting extension HasExtension(...) = true, want false", desc)
@@ -72,10 +101,68 @@ func TestExtensionFuncs(t *testing.T) {
 	}
 }
 
+func TestHasExtensionNoAlloc(t *testing.T) {
+	// If extensions are lazy, they are unmarshaled on first use. Verify that
+	// HasExtension does not do this by testing that it does not allocation. This
+	// test always passes if extension are eager (the default if protolegacy =
+	// false).
+	if race.Enabled {
+		t.Skip("HasExtension always allocates in -race mode")
+	}
+	// Create a message with a message extension. Doing it this way produces a
+	// non-lazy (eager) variant. Then do a marshal/unmarshal roundtrip to produce
+	// a lazy version (if protolegacy = true).
+	want := int32(42)
+	mEager := &testpb.TestAllExtensions{}
+	proto.SetExtension(mEager, testpb.E_OptionalNestedMessage, &testpb.TestAllExtensions_NestedMessage{
+		A:           proto.Int32(want),
+		Corecursive: &testpb.TestAllExtensions{},
+	})
+
+	b, err := proto.Marshal(mEager)
+	if err != nil {
+		t.Fatal(err)
+	}
+	mLazy := &testpb.TestAllExtensions{}
+	if err := proto.Unmarshal(b, mLazy); err != nil {
+		t.Fatal(err)
+	}
+
+	for _, tc := range []struct {
+		name string
+		m    proto.Message
+	}{
+		{name: "Nil", m: nil},
+		{name: "Eager", m: mEager},
+		{name: "Lazy", m: mLazy},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			// Testing for allocations can be done with `testing.AllocsPerRun`, but it
+			// has some snags that complicate its use for us:
+			//  - It performs a warmup invocation before starting the measurement. We
+			//    want to skip this because lazy initialization only happens once.
+			//  - Despite returning a float64, the returned value is an integer, so <1
+			//    allocations per operation are returned as 0. Therefore, pass runs =
+			//    1.
+			warmup := true
+			avg := testing.AllocsPerRun(1, func() {
+				if warmup {
+					warmup = false
+					return
+				}
+				proto.HasExtension(tc.m, testpb.E_OptionalNestedMessage)
+			})
+			if avg != 0 {
+				t.Errorf("proto.HasExtension should not allocate, but allocated %.2fx per run", avg)
+			}
+		})
+	}
+}
+
 func TestIsValid(t *testing.T) {
 	tests := []struct {
 		xt   protoreflect.ExtensionType
-		vi   interface{}
+		vi   any
 		want bool
 	}{
 		{testpb.E_OptionalBool, nil, false},
@@ -208,10 +295,10 @@ func TestIsValid(t *testing.T) {
 func TestExtensionRanger(t *testing.T) {
 	tests := []struct {
 		msg  proto.Message
-		want map[protoreflect.ExtensionType]interface{}
+		want map[protoreflect.ExtensionType]any
 	}{{
 		msg: &testpb.TestAllExtensions{},
-		want: map[protoreflect.ExtensionType]interface{}{
+		want: map[protoreflect.ExtensionType]any{
 			testpb.E_OptionalInt32:         int32(5),
 			testpb.E_OptionalString:        string("hello"),
 			testpb.E_OptionalNestedMessage: &testpb.TestAllExtensions_NestedMessage{},
@@ -221,17 +308,28 @@ func TestExtensionRanger(t *testing.T) {
 			testpb.E_RepeatedNestedEnum:    []testpb.TestAllTypes_NestedEnum{testpb.TestAllTypes_BAZ},
 		},
 	}, {
+		msg: &testeditionspb.TestAllExtensions{},
+		want: map[protoreflect.ExtensionType]any{
+			testeditionspb.E_OptionalInt32:         int32(5),
+			testeditionspb.E_OptionalString:        string("hello"),
+			testeditionspb.E_OptionalNestedMessage: &testeditionspb.TestAllExtensions_NestedMessage{},
+			testeditionspb.E_OptionalNestedEnum:    testeditionspb.TestAllTypes_BAZ,
+			testeditionspb.E_RepeatedFloat:         []float32{+32.32, -32.32},
+			testeditionspb.E_RepeatedNestedMessage: []*testeditionspb.TestAllExtensions_NestedMessage{{}},
+			testeditionspb.E_RepeatedNestedEnum:    []testeditionspb.TestAllTypes_NestedEnum{testeditionspb.TestAllTypes_BAZ},
+		},
+	}, {
 		msg: &descpb.MessageOptions{},
-		want: map[protoreflect.ExtensionType]interface{}{
-			test3pb.E_OptionalInt32:          int32(5),
-			test3pb.E_OptionalString:         string("hello"),
-			test3pb.E_OptionalForeignMessage: &test3pb.ForeignMessage{},
-			test3pb.E_OptionalForeignEnum:    test3pb.ForeignEnum_FOREIGN_BAR,
+		want: map[protoreflect.ExtensionType]any{
+			test3pb.E_OptionalInt32Ext:          int32(5),
+			test3pb.E_OptionalStringExt:         string("hello"),
+			test3pb.E_OptionalForeignMessageExt: &test3pb.ForeignMessage{},
+			test3pb.E_OptionalForeignEnumExt:    test3pb.ForeignEnum_FOREIGN_BAR,
 
-			test3pb.E_OptionalOptionalInt32:          int32(5),
-			test3pb.E_OptionalOptionalString:         string("hello"),
-			test3pb.E_OptionalOptionalForeignMessage: &test3pb.ForeignMessage{},
-			test3pb.E_OptionalOptionalForeignEnum:    test3pb.ForeignEnum_FOREIGN_BAR,
+			test3pb.E_OptionalOptionalInt32Ext:          int32(5),
+			test3pb.E_OptionalOptionalStringExt:         string("hello"),
+			test3pb.E_OptionalOptionalForeignMessageExt: &test3pb.ForeignMessage{},
+			test3pb.E_OptionalOptionalForeignEnumExt:    test3pb.ForeignEnum_FOREIGN_BAR,
 		},
 	}}
 
@@ -240,8 +338,8 @@ func TestExtensionRanger(t *testing.T) {
 			proto.SetExtension(tt.msg, xt, v)
 		}
 
-		got := make(map[protoreflect.ExtensionType]interface{})
-		proto.RangeExtensions(tt.msg, func(xt protoreflect.ExtensionType, v interface{}) bool {
+		got := make(map[protoreflect.ExtensionType]any)
+		proto.RangeExtensions(tt.msg, func(xt protoreflect.ExtensionType, v any) bool {
 			got[xt] = v
 			return true
 		})
@@ -286,4 +384,26 @@ func TestExtensionGetRace(t *testing.T) {
 		}()
 	}
 	wg.Wait()
+}
+
+func TestFeatureResolution(t *testing.T) {
+	for _, tc := range []struct {
+		input interface {
+			TypeDescriptor() protoreflect.ExtensionTypeDescriptor
+		}
+		wantPacked bool
+	}{
+		{testeditionspb.E_GlobalExpandedExtension, false},
+		{testeditionspb.E_GlobalPackedExtensionOverriden, true},
+		{testeditionspb.E_RepeatedFieldEncoding_MessageExpandedExtension, false},
+		{testeditionspb.E_RepeatedFieldEncoding_MessagePackedExtensionOverriden, true},
+		{testeditionspb.E_OtherFileGlobalExpandedExtensionOverriden, false},
+		{testeditionspb.E_OtherFileGlobalPackedExtension, true},
+		{testeditionspb.E_OtherRepeatedFieldEncoding_OtherFileMessagePackedExtension, true},
+		{testeditionspb.E_OtherRepeatedFieldEncoding_OtherFileMessageExpandedExtensionOverriden, false},
+	} {
+		if got, want := tc.input.TypeDescriptor().IsPacked(), tc.wantPacked; got != want {
+			t.Errorf("%v.IsPacked() = %v, want %v", tc.input.TypeDescriptor().FullName(), got, want)
+		}
+	}
 }

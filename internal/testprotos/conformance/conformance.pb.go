@@ -152,11 +152,9 @@ type FailureSet struct {
 
 func (x *FailureSet) Reset() {
 	*x = FailureSet{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_conformance_conformance_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_conformance_conformance_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *FailureSet) String() string {
@@ -167,7 +165,7 @@ func (*FailureSet) ProtoMessage() {}
 
 func (x *FailureSet) ProtoReflect() protoreflect.Message {
 	mi := &file_conformance_conformance_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -229,11 +227,9 @@ type ConformanceRequest struct {
 
 func (x *ConformanceRequest) Reset() {
 	*x = ConformanceRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_conformance_conformance_proto_msgTypes[1]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_conformance_conformance_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *ConformanceRequest) String() string {
@@ -244,7 +240,7 @@ func (*ConformanceRequest) ProtoMessage() {}
 
 func (x *ConformanceRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_conformance_conformance_proto_msgTypes[1]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -380,11 +376,9 @@ type ConformanceResponse struct {
 
 func (x *ConformanceResponse) Reset() {
 	*x = ConformanceResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_conformance_conformance_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_conformance_conformance_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *ConformanceResponse) String() string {
@@ -395,7 +389,7 @@ func (*ConformanceResponse) ProtoMessage() {}
 
 func (x *ConformanceResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_conformance_conformance_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -575,11 +569,9 @@ type JspbEncodingConfig struct {
 
 func (x *JspbEncodingConfig) Reset() {
 	*x = JspbEncodingConfig{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_conformance_conformance_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_conformance_conformance_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *JspbEncodingConfig) String() string {
@@ -590,7 +582,7 @@ func (*JspbEncodingConfig) ProtoMessage() {}
 
 func (x *JspbEncodingConfig) ProtoReflect() protoreflect.Message {
 	mi := &file_conformance_conformance_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -714,7 +706,7 @@ func file_conformance_conformance_proto_rawDescGZIP() []byte {
 
 var file_conformance_conformance_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_conformance_conformance_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_conformance_conformance_proto_goTypes = []interface{}{
+var file_conformance_conformance_proto_goTypes = []any{
 	(WireFormat)(0),             // 0: conformance.WireFormat
 	(TestCategory)(0),           // 1: conformance.TestCategory
 	(*FailureSet)(nil),          // 2: conformance.FailureSet
@@ -738,63 +730,13 @@ func file_conformance_conformance_proto_init() {
 	if File_conformance_conformance_proto != nil {
 		return
 	}
-	if !protoimpl.UnsafeEnabled {
-		file_conformance_conformance_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*FailureSet); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_conformance_conformance_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ConformanceRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_conformance_conformance_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ConformanceResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_conformance_conformance_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*JspbEncodingConfig); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
-	file_conformance_conformance_proto_msgTypes[1].OneofWrappers = []interface{}{
+	file_conformance_conformance_proto_msgTypes[1].OneofWrappers = []any{
 		(*ConformanceRequest_ProtobufPayload)(nil),
 		(*ConformanceRequest_JsonPayload)(nil),
 		(*ConformanceRequest_JspbPayload)(nil),
 		(*ConformanceRequest_TextPayload)(nil),
 	}
-	file_conformance_conformance_proto_msgTypes[2].OneofWrappers = []interface{}{
+	file_conformance_conformance_proto_msgTypes[2].OneofWrappers = []any{
 		(*ConformanceResponse_ParseError)(nil),
 		(*ConformanceResponse_SerializeError)(nil),
 		(*ConformanceResponse_TimeoutError)(nil),

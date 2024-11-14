@@ -14,12 +14,10 @@ import (
 	"fmt"
 	"io"
 	"io/fs"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"reflect"
 	"regexp"
 	"runtime"
 	"runtime/debug"
@@ -35,26 +33,26 @@ var (
 	regenerate   = flag.Bool("regenerate", false, "regenerate files")
 	buildRelease = flag.Bool("buildRelease", false, "build release binaries")
 
-	protobufVersion = "25.1"
+	protobufVersion = "27.0"
 
 	golangVersions = func() []string {
-		// Version policy: same version as is in the x/ repos' go.mod.
+		// Version policy: oldest supported version of Go, plus the version before that.
+		// This matches the version policy of the Google Cloud Client Libraries:
+		// https://cloud.google.com/go/getting-started/supported-go-versions
 		return []string{
-			"1.17.13",
-			"1.18.10",
-			"1.19.13",
-			"1.20.12",
-			"1.21.5",
+			"1.21.13",
+			"1.22.6",
+			"1.23.0",
 		}
 	}()
 	golangLatest = golangVersions[len(golangVersions)-1]
 
-	staticcheckVersion = "2023.1.6"
+	staticcheckVersion = "2024.1.1"
 	staticcheckSHA256s = map[string]string{
-		"darwin/amd64": "b14a0cbd3c238713f5f9db41550893ea7d75d8d7822491c7f4e33e2fe43f6305",
-		"darwin/arm64": "f1c869abe6be2c6ab727dc9d6049766c947534766d71a1798c12a37526ea2b6f",
-		"linux/386":    "02859a7c44c7b5ab41a70d9b8107c01ab8d2c94075bae3d0b02157aff743ca42",
-		"linux/amd64":  "45337834da5dc7b8eff01cb6b3837e3759503cfbb8edf36b09e42f32bccb1f6e",
+		"darwin/amd64": "b67380b84b81d5765b478b7ad888dd7ce53b2c0861103bafa946ac84dc9244ce",
+		"darwin/arm64": "09cb10e4199f7c6356c2ed5dc45e877c3087ef775d84d39338b52e1a94866074",
+		"linux/386":    "0225fd8b5cf6c762f9c0aedf1380ed4df576d1d54fb68691be895889e10faf0b",
+		"linux/amd64":  "6e9398fcaff2b36e1d15e84a647a3a14733b7c2dd41187afa2c182a4c3b32180",
 	}
 
 	// purgeTimeout determines the maximum age of unused sub-directories.
@@ -142,10 +140,10 @@ func TestIntegration(t *testing.T) {
 		}
 
 		runGo("Normal", command{}, "go", "test", "-race", "./...")
-		runGo("PureGo", command{}, "go", "test", "-race", "-tags", "purego", "./...")
 		runGo("Reflect", command{}, "go", "test", "-race", "-tags", "protoreflect", "./...")
 		if goVersion == golangLatest {
-			runGo("ProtoLegacy", command{}, "go", "test", "-race", "-tags", "protolegacy", "./...")
+			runGo("ProtoLegacyRace", command{}, "go", "test", "-race", "-tags", "protolegacy", "./...")
+			runGo("ProtoLegacy", command{}, "go", "test", "-tags", "protolegacy", "./...")
 			runGo("ProtocGenGo", command{Dir: "cmd/protoc-gen-go/testdata"}, "go", "test")
 			runGo("Conformance", command{Dir: "internal/conformance"}, "go", "test", "-execute")
 
@@ -228,14 +226,16 @@ func mustInitDeps(t *testing.T) {
 	// Delete other sub-directories that are no longer relevant.
 	defer func() {
 		now := time.Now()
-		fis, _ := ioutil.ReadDir(testDir)
+		fis, _ := os.ReadDir(testDir)
 		for _, fi := range fis {
 			dir := filepath.Join(testDir, fi.Name())
 			if finishedDirs[dir] {
 				os.Chtimes(dir, now, now) // best-effort
 				continue
 			}
-			if now.Sub(fi.ModTime()) < purgeTimeout {
+			fii, err := fi.Info()
+			check(err)
+			if now.Sub(fii.ModTime()) < purgeTimeout {
 				continue
 			}
 			fmt.Printf("delete %v\n", fi.Name())
@@ -283,14 +283,24 @@ func mustInitDeps(t *testing.T) {
 			// the conformance test runner.
 			fmt.Printf("build %v\n", filepath.Base(protobufPath))
 			env := os.Environ()
+			args := []string{
+				"bazel", "build",
+				":protoc",
+				"//conformance:conformance_test_runner",
+			}
 			if runtime.GOOS == "darwin" {
 				// Adding this environment variable appears to be necessary for macOS builds.
 				env = append(env, "CC=clang")
+				// And this flag.
+				args = append(args,
+					"--macos_minimum_os=13.0",
+					"--host_macos_minimum_os=13.0",
+				)
 			}
 			command{
 				Dir: protobufPath,
 				Env: env,
-			}.mustRun(t, "bazel", "build", ":protoc", "//conformance:conformance_test_runner")
+			}.mustRun(t, args...)
 		}
 	}
 	check(os.Setenv("PROTOBUF_ROOT", protobufPath)) // for generate-protos
@@ -362,7 +372,7 @@ func downloadArchive(check func(error), dstPath, srcURL, skipPrefix, wantSHA256 
 
 	var r io.Reader = resp.Body
 	if wantSHA256 != "" {
-		b, err := ioutil.ReadAll(resp.Body)
+		b, err := io.ReadAll(resp.Body)
 		check(err)
 		r = bytes.NewReader(b)
 
@@ -397,9 +407,9 @@ func downloadArchive(check func(error), dstPath, srcURL, skipPrefix, wantSHA256 
 		mode := os.FileMode(h.Mode & 0777)
 		switch h.Typeflag {
 		case tar.TypeReg:
-			b, err := ioutil.ReadAll(tr)
+			b, err := io.ReadAll(tr)
 			check(err)
-			check(ioutil.WriteFile(path, b, mode))
+			check(os.WriteFile(path, b, mode))
 		case tar.TypeDir:
 			check(os.Mkdir(path, mode))
 		}
@@ -432,7 +442,7 @@ func mustHandleFlags(t *testing.T) {
 					cmd.mustRun(t, "go", "build", "-trimpath", "-ldflags", "-s -w -buildid=", "-o", binPath, "./cmd/protoc-gen-go")
 
 					// Archive and compress the binary.
-					in, err := ioutil.ReadFile(binPath)
+					in, err := os.ReadFile(binPath)
 					if err != nil {
 						t.Fatal(err)
 					}
@@ -461,7 +471,7 @@ func mustHandleFlags(t *testing.T) {
 						tw.Close()
 						gz.Close()
 					}
-					if err := ioutil.WriteFile(binPath+suffix, out.Bytes(), 0664); err != nil {
+					if err := os.WriteFile(binPath+suffix, out.Bytes(), 0664); err != nil {
 						t.Fatal(err)
 					}
 				}
@@ -488,7 +498,13 @@ func mustHaveCopyrightHeader(t *testing.T, files []string) {
 	var bad []string
 File:
 	for _, file := range files {
-		b, err := ioutil.ReadFile(file)
+		if strings.HasSuffix(file, "internal/testprotos/conformance/editions/test_messages_edition2023.pb.go") {
+			// TODO(lassefolger) the underlying proto file is checked into
+			// the protobuf repo without a copyright header. Fix is pending but
+			// might require a release.
+			continue
+		}
+		b, err := os.ReadFile(file)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -545,15 +561,9 @@ func race() bool {
 	if !ok {
 		return false
 	}
-	// Use reflect because the debug.BuildInfo.Settings field
-	// isn't available in Go 1.17.
-	s := reflect.ValueOf(bi).Elem().FieldByName("Settings")
-	if !s.IsValid() {
-		return false
-	}
-	for i := 0; i < s.Len(); i++ {
-		if s.Index(i).FieldByName("Key").String() == "-race" {
-			return s.Index(i).FieldByName("Value").String() == "true"
+	for _, setting := range bi.Settings {
+		if setting.Key == "-race" {
+			return setting.Value == "true"
 		}
 	}
 	return false

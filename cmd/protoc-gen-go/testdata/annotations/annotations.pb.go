@@ -80,11 +80,9 @@ type AnnotationsTestMessage struct {
 
 func (x *AnnotationsTestMessage) Reset() {
 	*x = AnnotationsTestMessage{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *AnnotationsTestMessage) String() string {
@@ -95,7 +93,7 @@ func (*AnnotationsTestMessage) ProtoMessage() {}
 
 func (x *AnnotationsTestMessage) ProtoReflect() protoreflect.Message {
 	mi := &file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -175,7 +173,7 @@ func file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_rawDescGZIP()
 
 var file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_goTypes = []interface{}{
+var file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_goTypes = []any{
 	(AnnotationsTestEnum)(0),       // 0: goproto.protoc.annotations.AnnotationsTestEnum
 	(*AnnotationsTestMessage)(nil), // 1: goproto.protoc.annotations.AnnotationsTestMessage
 }
@@ -191,22 +189,6 @@ func init() { file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_init
 func file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_init() {
 	if File_cmd_protoc_gen_go_testdata_annotations_annotations_proto != nil {
 		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_cmd_protoc_gen_go_testdata_annotations_annotations_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*AnnotationsTestMessage); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.weakFields
-			case 3:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

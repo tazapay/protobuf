@@ -9,6 +9,7 @@ package main
 import (
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/annotations"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/comments"
+	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/enumprefix"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/extensions/base"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/extensions/ext"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/extensions/extra"
@@ -26,5 +27,6 @@ import (
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/nopackage"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/proto2"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/proto3"
+	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/protoeditions"
 	_ "google.golang.org/protobuf/cmd/protoc-gen-go/testdata/retention"
 )

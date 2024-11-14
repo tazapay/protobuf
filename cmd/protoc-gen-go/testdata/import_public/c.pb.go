@@ -29,11 +29,9 @@ type UsingPublicImport struct {
 
 func (x *UsingPublicImport) Reset() {
 	*x = UsingPublicImport{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_cmd_protoc_gen_go_testdata_import_public_c_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_cmd_protoc_gen_go_testdata_import_public_c_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *UsingPublicImport) String() string {
@@ -44,7 +42,7 @@ func (*UsingPublicImport) ProtoMessage() {}
 
 func (x *UsingPublicImport) ProtoReflect() protoreflect.Message {
 	mi := &file_cmd_protoc_gen_go_testdata_import_public_c_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -113,7 +111,7 @@ func file_cmd_protoc_gen_go_testdata_import_public_c_proto_rawDescGZIP() []byte 
 }
 
 var file_cmd_protoc_gen_go_testdata_import_public_c_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_cmd_protoc_gen_go_testdata_import_public_c_proto_goTypes = []interface{}{
+var file_cmd_protoc_gen_go_testdata_import_public_c_proto_goTypes = []any{
 	(*UsingPublicImport)(nil), // 0: goproto.protoc.import_public.UsingPublicImport
 	(*Local)(nil),             // 1: goproto.protoc.import_public.Local
 	(*sub2.Sub2Message)(nil),  // 2: goproto.protoc.import_public.sub2.Sub2Message
@@ -134,20 +132,6 @@ func file_cmd_protoc_gen_go_testdata_import_public_c_proto_init() {
 		return
 	}
 	file_cmd_protoc_gen_go_testdata_import_public_a_proto_init()
-	if !protoimpl.UnsafeEnabled {
-		file_cmd_protoc_gen_go_testdata_import_public_c_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UsingPublicImport); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

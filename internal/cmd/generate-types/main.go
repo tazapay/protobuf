@@ -11,7 +11,6 @@ import (
 	"flag"
 	"fmt"
 	"go/format"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path"
@@ -172,6 +171,16 @@ var descListTypesTemplate = template.Must(template.New("").Parse(`
 					if _, ok := p.byText[d.TextName()]; !ok {
 						p.byText[d.TextName()] = d
 					}
+					if isGroupLike(d) {
+						lowerJSONName := strings.ToLower(d.JSONName())
+						if _, ok := p.byJSON[lowerJSONName]; !ok {
+							p.byJSON[lowerJSONName] = d
+						}
+						lowerTextName := strings.ToLower(d.TextName())
+						if _, ok := p.byText[lowerTextName]; !ok {
+							p.byText[lowerTextName] = d
+						}
+					}
 					{{- end}}
 					{{- if .NumberExpr}}
 					if _, ok := p.byNum[d.Number()]; !ok {
@@ -186,7 +195,7 @@ var descListTypesTemplate = template.Must(template.New("").Parse(`
 	{{- end}}
 `))
 
-func mustExecute(t *template.Template, data interface{}) string {
+func mustExecute(t *template.Template, data any) string {
 	var b bytes.Buffer
 	if err := t.Execute(&b, data); err != nil {
 		panic(err)
@@ -201,6 +210,7 @@ func writeSource(file, src string) {
 		"fmt",
 		"math",
 		"reflect",
+		"strings",
 		"sync",
 		"unicode/utf8",
 		"",
@@ -248,13 +258,13 @@ func writeSource(file, src string) {
 
 	absFile := filepath.Join(repoRoot, file)
 	if run {
-		prev, _ := ioutil.ReadFile(absFile)
+		prev, _ := os.ReadFile(absFile)
 		if !bytes.Equal(b, prev) {
 			fmt.Println("#", file)
-			check(ioutil.WriteFile(absFile, b, 0664))
+			check(os.WriteFile(absFile, b, 0664))
 		}
 	} else {
-		check(ioutil.WriteFile(absFile+".tmp", b, 0664))
+		check(os.WriteFile(absFile+".tmp", b, 0664))
 		defer os.Remove(absFile + ".tmp")
 
 		cmd := exec.Command("diff", file, file+".tmp", "-N", "-u")

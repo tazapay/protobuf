@@ -22,11 +22,9 @@ type PublicImportMessage struct {
 
 func (x *PublicImportMessage) Reset() {
 	*x = PublicImportMessage{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_internal_testprotos_test_test_public_proto_msgTypes[0]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
+	mi := &file_internal_testprotos_test_test_public_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
 }
 
 func (x *PublicImportMessage) String() string {
@@ -37,7 +35,7 @@ func (*PublicImportMessage) ProtoMessage() {}
 
 func (x *PublicImportMessage) ProtoReflect() protoreflect.Message {
 	mi := &file_internal_testprotos_test_test_public_proto_msgTypes[0]
-	if protoimpl.UnsafeEnabled && x != nil {
+	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
 			ms.StoreMessageInfo(mi)
@@ -79,7 +77,7 @@ func file_internal_testprotos_test_test_public_proto_rawDescGZIP() []byte {
 }
 
 var file_internal_testprotos_test_test_public_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_internal_testprotos_test_test_public_proto_goTypes = []interface{}{
+var file_internal_testprotos_test_test_public_proto_goTypes = []any{
 	(*PublicImportMessage)(nil), // 0: goproto.proto.test.PublicImportMessage
 }
 var file_internal_testprotos_test_test_public_proto_depIdxs = []int32{
@@ -94,20 +92,6 @@ func init() { file_internal_testprotos_test_test_public_proto_init() }
 func file_internal_testprotos_test_test_public_proto_init() {
 	if File_internal_testprotos_test_test_public_proto != nil {
 		return
-	}
-	if !protoimpl.UnsafeEnabled {
-		file_internal_testprotos_test_test_public_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PublicImportMessage); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
