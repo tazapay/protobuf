@@ -33,7 +33,7 @@ var (
 	regenerate   = flag.Bool("regenerate", false, "regenerate files")
 	buildRelease = flag.Bool("buildRelease", false, "build release binaries")
 
-	protobufVersion = "27.0"
+	protobufVersion = "29.1"
 
 	golangVersions = func() []string {
 		// Version policy: oldest supported version of Go, plus the version before that.
@@ -140,6 +140,7 @@ func TestIntegration(t *testing.T) {
 		}
 
 		runGo("Normal", command{}, "go", "test", "-race", "./...")
+		runGo("LazyDecoding", command{}, "go", "test", "./proto", "-test_lazy_unmarshal")
 		runGo("Reflect", command{}, "go", "test", "-race", "-tags", "protoreflect", "./...")
 		if goVersion == golangLatest {
 			runGo("ProtoLegacyRace", command{}, "go", "test", "-race", "-tags", "protolegacy", "./...")
