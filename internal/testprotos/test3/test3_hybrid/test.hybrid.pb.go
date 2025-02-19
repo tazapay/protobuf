@@ -13,6 +13,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
+	unsafe "unsafe"
 )
 
 type ForeignEnum int32
@@ -2122,7 +2123,7 @@ func (b0 TestAllTypes_NestedMessage_builder) Build() *TestAllTypes_NestedMessage
 
 var File_internal_testprotos_test3_test3_hybrid_test_hybrid_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_rawDesc = []byte{
+var file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_rawDesc = string([]byte{
 	0x0a, 0x38, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x33, 0x2f, 0x74, 0x65, 0x73, 0x74,
 	0x33, 0x5f, 0x68, 0x79, 0x62, 0x72, 0x69, 0x64, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x68, 0x79,
@@ -2645,7 +2646,7 @@ var file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_rawDesc = []by
 	0x74, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x33, 0x2f, 0x74, 0x65,
 	0x73, 0x74, 0x33, 0x5f, 0x68, 0x79, 0x62, 0x72, 0x69, 0x64, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x33,
-}
+})
 
 var file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
@@ -2744,7 +2745,7 @@ func file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_rawDesc), len(file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   20,
 			NumExtensions: 0,
@@ -2756,7 +2757,6 @@ func file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_init() {
 		MessageInfos:      file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_msgTypes,
 	}.Build()
 	File_internal_testprotos_test3_test3_hybrid_test_hybrid_proto = out.File
-	file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_rawDesc = nil
 	file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_goTypes = nil
 	file_internal_testprotos_test3_test3_hybrid_test_hybrid_proto_depIdxs = nil
 }

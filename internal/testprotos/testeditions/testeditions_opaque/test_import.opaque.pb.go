@@ -12,6 +12,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/gofeaturespb"
 	reflect "reflect"
+	unsafe "unsafe"
 )
 
 type ImportEnum int32
@@ -97,7 +98,7 @@ func (b0 ImportMessage_builder) Build() *ImportMessage {
 
 var File_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_rawDesc = []byte{
+var file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_rawDesc = string([]byte{
 	0x0a, 0x4d, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f,
 	0x6e, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x5f,
@@ -117,7 +118,7 @@ var file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque
 	0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e,
 	0x73, 0x5f, 0x6f, 0x70, 0x61, 0x71, 0x75, 0x65, 0x92, 0x03, 0x05, 0xd2, 0x3e, 0x02, 0x10, 0x03,
 	0x62, 0x08, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x70, 0xe8, 0x07,
-}
+})
 
 var file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
@@ -144,7 +145,7 @@ func file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaqu
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_rawDesc), len(file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   1,
 			NumExtensions: 0,
@@ -156,7 +157,6 @@ func file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaqu
 		MessageInfos:      file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_msgTypes,
 	}.Build()
 	File_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto = out.File
-	file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_rawDesc = nil
 	file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_goTypes = nil
 	file_internal_testprotos_testeditions_testeditions_opaque_test_import_opaque_proto_depIdxs = nil
 }

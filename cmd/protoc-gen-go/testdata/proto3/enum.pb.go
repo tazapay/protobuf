@@ -12,6 +12,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type Enum int32
@@ -65,7 +66,7 @@ func (Enum) EnumDescriptor() ([]byte, []int) {
 
 var File_cmd_protoc_gen_go_testdata_proto3_enum_proto protoreflect.FileDescriptor
 
-var file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc = []byte{
+var file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc = string([]byte{
 	0x0a, 0x2c, 0x63, 0x6d, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e,
 	0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x33, 0x2f, 0x65, 0x6e, 0x75, 0x6d, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x15,
@@ -78,16 +79,16 @@ var file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc = []byte{
 	0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e, 0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61,
 	0x74, 0x61, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x33,
-}
+})
 
 var (
 	file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescOnce sync.Once
-	file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescData = file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc
+	file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescData []byte
 )
 
 func file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescGZIP() []byte {
 	file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescOnce.Do(func() {
-		file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescData = protoimpl.X.CompressGZIP(file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescData)
+		file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc)))
 	})
 	return file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDescData
 }
@@ -113,7 +114,7 @@ func file_cmd_protoc_gen_go_testdata_proto3_enum_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   0,
 			NumExtensions: 0,
@@ -124,7 +125,6 @@ func file_cmd_protoc_gen_go_testdata_proto3_enum_proto_init() {
 		EnumInfos:         file_cmd_protoc_gen_go_testdata_proto3_enum_proto_enumTypes,
 	}.Build()
 	File_cmd_protoc_gen_go_testdata_proto3_enum_proto = out.File
-	file_cmd_protoc_gen_go_testdata_proto3_enum_proto_rawDesc = nil
 	file_cmd_protoc_gen_go_testdata_proto3_enum_proto_goTypes = nil
 	file_cmd_protoc_gen_go_testdata_proto3_enum_proto_depIdxs = nil
 }

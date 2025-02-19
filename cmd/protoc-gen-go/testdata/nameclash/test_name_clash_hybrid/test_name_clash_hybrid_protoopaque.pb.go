@@ -33,13 +33,14 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/gofeaturespb"
 	reflect "reflect"
+	unsafe "unsafe"
 )
 
 type M1 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
-	xxx_hidden_GetFoo_     int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo" json:"get_foo,omitempty"`
-	xxx_hidden_GetGetFoo   int32                  `protobuf:"varint,3,opt,name=get_get_foo,json=getGetFoo" json:"get_get_foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
+	xxx_hidden_GetFoo_     int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo"`
+	xxx_hidden_GetGetFoo   int32                  `protobuf:"varint,3,opt,name=get_get_foo,json=getGetFoo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -182,9 +183,9 @@ func (b0 M1_builder) Build() *M1 {
 
 type M2 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_GetGetFoo   int32                  `protobuf:"varint,3,opt,name=get_get_foo,json=getGetFoo" json:"get_get_foo,omitempty"`
-	xxx_hidden_GetFoo_     int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo" json:"get_foo,omitempty"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_GetGetFoo   int32                  `protobuf:"varint,3,opt,name=get_get_foo,json=getGetFoo"`
+	xxx_hidden_GetFoo_     int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -327,9 +328,9 @@ func (b0 M2_builder) Build() *M2 {
 
 type M3 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_GetFoo      int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo" json:"get_foo,omitempty"`
-	xxx_hidden_GetGetFoo_  int32                  `protobuf:"varint,3,opt,name=get_get_foo,json=getGetFoo" json:"get_get_foo,omitempty"`
-	xxx_hidden_Foo_        int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_GetFoo      int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo"`
+	xxx_hidden_GetGetFoo_  int32                  `protobuf:"varint,3,opt,name=get_get_foo,json=getGetFoo"`
+	xxx_hidden_Foo_        int32                  `protobuf:"varint,1,opt,name=foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -472,9 +473,9 @@ func (b0 M3_builder) Build() *M3 {
 
 type M4 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_GetFoo      int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo" json:"get_foo,omitempty"`
+	xxx_hidden_GetFoo      int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo"`
 	xxx_hidden_GetGetFoo_  isM4_GetGetFoo_        `protobuf_oneof:"get_get_foo"`
-	xxx_hidden_Foo_        int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo_        int32                  `protobuf:"varint,1,opt,name=foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -671,9 +672,9 @@ func (*m4_GetGetGetFoo) isM4_GetGetFoo_() {}
 
 type M5 struct {
 	state                   protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_GetFoo       int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo" json:"get_foo,omitempty"`
+	xxx_hidden_GetFoo       int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo"`
 	xxx_hidden_GetGetGetFoo isM5_GetGetGetFoo      `protobuf_oneof:"get_get_get_foo"`
-	xxx_hidden_Foo_         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo_         int32                  `protobuf:"varint,1,opt,name=foo"`
 	XXX_raceDetectHookData  protoimpl.RaceDetectHookData
 	XXX_presence            [1]uint32
 	unknownFields           protoimpl.UnknownFields
@@ -872,8 +873,8 @@ func (*m5_GetGetFoo_) isM5_GetGetGetFoo() {}
 type M6 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_GetGetFoo   isM6_GetGetFoo         `protobuf_oneof:"get_get_foo"`
-	xxx_hidden_GetFoo_     int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo" json:"get_foo,omitempty"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_GetFoo_     int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -1070,7 +1071,7 @@ func (*m6_GetGetGetFoo) isM6_GetGetFoo() {}
 type M7 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_GetGetFoo   isM7_GetGetFoo         `protobuf_oneof:"get_get_foo"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -1278,8 +1279,8 @@ func (*m7_GetFoo_) isM7_GetGetFoo() {}
 type M8 struct {
 	state                    protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_GetGetGetFoo_ isM8_GetGetGetFoo_     `protobuf_oneof:"get_get_get_foo"`
-	xxx_hidden_GetFoo_       int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo" json:"get_foo,omitempty"`
-	xxx_hidden_Foo           int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_GetFoo_       int32                  `protobuf:"varint,2,opt,name=get_foo,json=getFoo"`
+	xxx_hidden_Foo           int32                  `protobuf:"varint,1,opt,name=foo"`
 	XXX_raceDetectHookData   protoimpl.RaceDetectHookData
 	XXX_presence             [1]uint32
 	unknownFields            protoimpl.UnknownFields
@@ -1476,7 +1477,7 @@ func (*m8_GetGetFoo) isM8_GetGetGetFoo_() {}
 type M9 struct {
 	state                    protoimpl.MessageState `protogen:"opaque.v1"`
 	xxx_hidden_GetGetGetFoo_ isM9_GetGetGetFoo_     `protobuf_oneof:"get_get_get_foo"`
-	xxx_hidden_Foo           int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo           int32                  `protobuf:"varint,1,opt,name=foo"`
 	XXX_raceDetectHookData   protoimpl.RaceDetectHookData
 	XXX_presence             [1]uint32
 	unknownFields            protoimpl.UnknownFields
@@ -1683,8 +1684,8 @@ func (*m9_GetFoo_) isM9_GetGetGetFoo_() {}
 
 type M10 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
-	xxx_hidden_SetFoo      int32                  `protobuf:"varint,2,opt,name=set_foo,json=setFoo" json:"set_foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
+	xxx_hidden_SetFoo      int32                  `protobuf:"varint,2,opt,name=set_foo,json=setFoo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -1793,7 +1794,7 @@ func (b0 M10_builder) Build() *M10 {
 
 type M11 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	xxx_hidden_SetFoo      isM11_SetFoo           `protobuf_oneof:"set_foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
@@ -1953,7 +1954,7 @@ func (*m11_SetSetFoo) isM11_SetFoo() {}
 
 type M12 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	xxx_hidden_SetSetFoo   isM12_SetSetFoo        `protobuf_oneof:"set_set_foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
@@ -2113,8 +2114,8 @@ func (*m12_SetFoo) isM12_SetSetFoo() {}
 
 type M13 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
-	xxx_hidden_HasFoo      int32                  `protobuf:"varint,2,opt,name=has_foo,json=hasFoo" json:"has_foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
+	xxx_hidden_HasFoo      int32                  `protobuf:"varint,2,opt,name=has_foo,json=hasFoo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -2223,7 +2224,7 @@ func (b0 M13_builder) Build() *M13 {
 
 type M14 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	xxx_hidden_HasFoo      isM14_HasFoo           `protobuf_oneof:"has_foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
@@ -2384,7 +2385,7 @@ func (*m14_HasHasFoo) isM14_HasFoo() {}
 
 type M15 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	xxx_hidden_HasHasFoo   isM15_HasHasFoo        `protobuf_oneof:"has_has_foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
@@ -2545,8 +2546,8 @@ func (*m15_HasFoo) isM15_HasHasFoo() {}
 
 type M16 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
-	xxx_hidden_ClearFoo    int32                  `protobuf:"varint,2,opt,name=clear_foo,json=clearFoo" json:"clear_foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
+	xxx_hidden_ClearFoo    int32                  `protobuf:"varint,2,opt,name=clear_foo,json=clearFoo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -2655,7 +2656,7 @@ func (b0 M16_builder) Build() *M16 {
 
 type M17 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	xxx_hidden_ClearFoo    isM17_ClearFoo         `protobuf_oneof:"clear_foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
@@ -2816,7 +2817,7 @@ func (*m17_ClearClearFoo) isM17_ClearFoo() {}
 
 type M18 struct {
 	state                    protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo           int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo           int32                  `protobuf:"varint,1,opt,name=foo"`
 	xxx_hidden_ClearClearFoo isM18_ClearClearFoo    `protobuf_oneof:"clear_clear_foo"`
 	XXX_raceDetectHookData   protoimpl.RaceDetectHookData
 	XXX_presence             [1]uint32
@@ -2977,7 +2978,7 @@ func (*m18_ClearFoo) isM18_ClearClearFoo() {}
 
 type M19 struct {
 	state                    protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo           int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo           int32                  `protobuf:"varint,1,opt,name=foo"`
 	xxx_hidden_WhichWhichFoo isM19_WhichWhichFoo    `protobuf_oneof:"which_which_foo"`
 	XXX_raceDetectHookData   protoimpl.RaceDetectHookData
 	XXX_presence             [1]uint32
@@ -3138,7 +3139,7 @@ func (*m19_WhichFoo) isM19_WhichWhichFoo() {}
 
 type M20 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo" json:"foo,omitempty"`
+	xxx_hidden_Foo         int32                  `protobuf:"varint,1,opt,name=foo"`
 	xxx_hidden_WhichFoo    isM20_WhichFoo         `protobuf_oneof:"which_foo"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
@@ -3297,9 +3298,153 @@ type m20_WhichWhichFoo struct {
 
 func (*m20_WhichWhichFoo) isM20_WhichFoo() {}
 
+type M21 struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_XFoo        *string                `protobuf:"bytes,1,opt,name=_foo,json=Foo"`
+	xxx_hidden_XFoo_       *string                `protobuf:"bytes,2,opt,name=X_foo,json=XFoo"`
+	xxx_hidden_GetXFoo__   *string                `protobuf:"bytes,3,opt,name=get_x_foo,json=getXFoo"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *M21) Reset() {
+	*x = M21{}
+	mi := &file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *M21) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*M21) ProtoMessage() {}
+
+func (x *M21) ProtoReflect() protoreflect.Message {
+	mi := &file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *M21) GetXFoo_1() string {
+	if x != nil {
+		if x.xxx_hidden_XFoo != nil {
+			return *x.xxx_hidden_XFoo
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *M21) GetXFoo_2() string {
+	if x != nil {
+		if x.xxx_hidden_XFoo_ != nil {
+			return *x.xxx_hidden_XFoo_
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *M21) GetGetXFoo() string {
+	if x != nil {
+		if x.xxx_hidden_GetXFoo__ != nil {
+			return *x.xxx_hidden_GetXFoo__
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *M21) SetXFoo_1(v string) {
+	x.xxx_hidden_XFoo = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+}
+
+func (x *M21) SetXFoo_2(v string) {
+	x.xxx_hidden_XFoo_ = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
+}
+
+func (x *M21) SetGetXFoo(v string) {
+	x.xxx_hidden_GetXFoo__ = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 2, 3)
+}
+
+func (x *M21) HasXFoo_1() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *M21) HasXFoo_2() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *M21) HasGetXFoo() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 2)
+}
+
+func (x *M21) ClearXFoo_1() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_XFoo = nil
+}
+
+func (x *M21) ClearXFoo_2() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_XFoo_ = nil
+}
+
+func (x *M21) ClearGetXFoo() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 2)
+	x.xxx_hidden_GetXFoo__ = nil
+}
+
+type M21_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	XFoo_1  *string
+	XFoo_2  *string
+	GetXFoo *string
+}
+
+func (b0 M21_builder) Build() *M21 {
+	m0 := &M21{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.XFoo_1 != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
+		x.xxx_hidden_XFoo = b.XFoo_1
+	}
+	if b.XFoo_2 != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
+		x.xxx_hidden_XFoo_ = b.XFoo_2
+	}
+	if b.GetXFoo != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 2, 3)
+		x.xxx_hidden_GetXFoo__ = b.GetXFoo
+	}
+	return m0
+}
+
 var File_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto protoreflect.FileDescriptor
 
-var file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_rawDesc = []byte{
+var file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_rawDesc = string([]byte{
 	0x0a, 0x41, 0x63, 0x6d, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e,
 	0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x6e, 0x61, 0x6d,
 	0x65, 0x63, 0x6c, 0x61, 0x73, 0x68, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
@@ -3407,17 +3552,22 @@ var file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_rawDe
 	0x01, 0x28, 0x05, 0x52, 0x03, 0x66, 0x6f, 0x6f, 0x12, 0x28, 0x0a, 0x0f, 0x77, 0x68, 0x69, 0x63,
 	0x68, 0x5f, 0x77, 0x68, 0x69, 0x63, 0x68, 0x5f, 0x66, 0x6f, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28,
 	0x05, 0x48, 0x00, 0x52, 0x0d, 0x77, 0x68, 0x69, 0x63, 0x68, 0x57, 0x68, 0x69, 0x63, 0x68, 0x46,
-	0x6f, 0x6f, 0x42, 0x0b, 0x0a, 0x09, 0x77, 0x68, 0x69, 0x63, 0x68, 0x5f, 0x66, 0x6f, 0x6f, 0x42,
-	0x60, 0x5a, 0x56, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67,
-	0x2e, 0x6f, 0x72, 0x67, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x63, 0x6d,
-	0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e, 0x2d, 0x67, 0x6f, 0x2f,
-	0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x6e, 0x61, 0x6d, 0x65, 0x63, 0x6c, 0x61,
-	0x73, 0x68, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x63, 0x6c, 0x61,
-	0x73, 0x68, 0x5f, 0x68, 0x79, 0x62, 0x72, 0x69, 0x64, 0x92, 0x03, 0x05, 0xd2, 0x3e, 0x02, 0x10,
-	0x02, 0x62, 0x08, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x70, 0xe8, 0x07,
-}
+	0x6f, 0x6f, 0x42, 0x0b, 0x0a, 0x09, 0x77, 0x68, 0x69, 0x63, 0x68, 0x5f, 0x66, 0x6f, 0x6f, 0x22,
+	0x49, 0x0a, 0x03, 0x4d, 0x32, 0x31, 0x12, 0x11, 0x0a, 0x04, 0x5f, 0x66, 0x6f, 0x6f, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x46, 0x6f, 0x6f, 0x12, 0x13, 0x0a, 0x05, 0x58, 0x5f, 0x66,
+	0x6f, 0x6f, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x58, 0x46, 0x6f, 0x6f, 0x12, 0x1a,
+	0x0a, 0x09, 0x67, 0x65, 0x74, 0x5f, 0x78, 0x5f, 0x66, 0x6f, 0x6f, 0x18, 0x03, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x67, 0x65, 0x74, 0x58, 0x46, 0x6f, 0x6f, 0x42, 0x60, 0x5a, 0x56, 0x67, 0x6f,
+	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2e, 0x6f, 0x72, 0x67, 0x2f,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x63, 0x6d, 0x64, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e, 0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64,
+	0x61, 0x74, 0x61, 0x2f, 0x6e, 0x61, 0x6d, 0x65, 0x63, 0x6c, 0x61, 0x73, 0x68, 0x2f, 0x74, 0x65,
+	0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x5f, 0x63, 0x6c, 0x61, 0x73, 0x68, 0x5f, 0x68, 0x79,
+	0x62, 0x72, 0x69, 0x64, 0x92, 0x03, 0x05, 0xd2, 0x3e, 0x02, 0x10, 0x02, 0x62, 0x08, 0x65, 0x64,
+	0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x70, 0xe8, 0x07,
+})
 
-var file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_goTypes = []any{
 	(*M1)(nil),  // 0: net.proto2.go.testdata.nameclashhybrid.M1
 	(*M2)(nil),  // 1: net.proto2.go.testdata.nameclashhybrid.M2
@@ -3439,6 +3589,7 @@ var file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_goTyp
 	(*M18)(nil), // 17: net.proto2.go.testdata.nameclashhybrid.M18
 	(*M19)(nil), // 18: net.proto2.go.testdata.nameclashhybrid.M19
 	(*M20)(nil), // 19: net.proto2.go.testdata.nameclashhybrid.M20
+	(*M21)(nil), // 20: net.proto2.go.testdata.nameclashhybrid.M21
 }
 var file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -3501,9 +3652,9 @@ func file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_init
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
@@ -3512,7 +3663,6 @@ func file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_init
 		MessageInfos:      file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_msgTypes,
 	}.Build()
 	File_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto = out.File
-	file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_rawDesc = nil
 	file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_goTypes = nil
 	file_cmd_protoc_gen_go_testdata_nameclash_test_name_clash_hybrid_proto_depIdxs = nil
 }

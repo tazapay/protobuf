@@ -15,6 +15,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type WireFormat int32
@@ -696,7 +697,7 @@ func (x *JspbEncodingConfig) GetUseJspbArrayAnyFormat() bool {
 
 var File_conformance_conformance_proto protoreflect.FileDescriptor
 
-var file_conformance_conformance_proto_rawDesc = []byte{
+var file_conformance_conformance_proto_rawDesc = string([]byte{
 	0x0a, 0x1d, 0x63, 0x6f, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x6e, 0x63, 0x65, 0x2f, 0x63, 0x6f,
 	0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x6e, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12,
 	0x0b, 0x63, 0x6f, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x6e, 0x63, 0x65, 0x22, 0x6c, 0x0a, 0x0a,
@@ -789,16 +790,16 @@ var file_conformance_conformance_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x63, 0x6f, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x6e, 0x63,
 	0x65, 0xa2, 0x02, 0x0b, 0x43, 0x6f, 0x6e, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x6e, 0x63, 0x65, 0x62,
 	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
-}
+})
 
 var (
 	file_conformance_conformance_proto_rawDescOnce sync.Once
-	file_conformance_conformance_proto_rawDescData = file_conformance_conformance_proto_rawDesc
+	file_conformance_conformance_proto_rawDescData []byte
 )
 
 func file_conformance_conformance_proto_rawDescGZIP() []byte {
 	file_conformance_conformance_proto_rawDescOnce.Do(func() {
-		file_conformance_conformance_proto_rawDescData = protoimpl.X.CompressGZIP(file_conformance_conformance_proto_rawDescData)
+		file_conformance_conformance_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_conformance_conformance_proto_rawDesc), len(file_conformance_conformance_proto_rawDesc)))
 	})
 	return file_conformance_conformance_proto_rawDescData
 }
@@ -852,7 +853,7 @@ func file_conformance_conformance_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_conformance_conformance_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_conformance_conformance_proto_rawDesc), len(file_conformance_conformance_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   5,
 			NumExtensions: 0,
@@ -864,7 +865,6 @@ func file_conformance_conformance_proto_init() {
 		MessageInfos:      file_conformance_conformance_proto_msgTypes,
 	}.Build()
 	File_conformance_conformance_proto = out.File
-	file_conformance_conformance_proto_rawDesc = nil
 	file_conformance_conformance_proto_goTypes = nil
 	file_conformance_conformance_proto_depIdxs = nil
 }

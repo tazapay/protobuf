@@ -12,6 +12,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/gofeaturespb"
 	reflect "reflect"
+	unsafe "unsafe"
 )
 
 type Strip int32
@@ -191,7 +192,7 @@ func (x BothButOne) Number() protoreflect.EnumNumber {
 
 var File_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto protoreflect.FileDescriptor
 
-var file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_rawDesc = []byte{
+var file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_rawDesc = string([]byte{
 	0x0a, 0x36, 0x63, 0x6d, 0x64, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e,
 	0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x65, 0x6e, 0x75,
 	0x6d, 0x70, 0x72, 0x65, 0x66, 0x69, 0x78, 0x2f, 0x65, 0x6e, 0x75, 0x6d, 0x70, 0x72, 0x65, 0x66,
@@ -218,7 +219,7 @@ var file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_rawDesc = []byte
 	0x65, 0x6e, 0x2d, 0x67, 0x6f, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x64, 0x61, 0x74, 0x61, 0x2f, 0x65,
 	0x6e, 0x75, 0x6d, 0x70, 0x72, 0x65, 0x66, 0x69, 0x78, 0x92, 0x03, 0x05, 0xd2, 0x3e, 0x02, 0x18,
 	0x03, 0x62, 0x08, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x70, 0xe9, 0x07,
-}
+})
 
 var file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
 var file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_goTypes = []any{
@@ -244,7 +245,7 @@ func file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_rawDesc), len(file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_rawDesc)),
 			NumEnums:      4,
 			NumMessages:   0,
 			NumExtensions: 0,
@@ -255,7 +256,6 @@ func file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_init() {
 		EnumInfos:         file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_enumTypes,
 	}.Build()
 	File_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto = out.File
-	file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_rawDesc = nil
 	file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_goTypes = nil
 	file_cmd_protoc_gen_go_testdata_enumprefix_enumprefix_proto_depIdxs = nil
 }

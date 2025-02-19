@@ -12,6 +12,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/gofeaturespb"
 	reflect "reflect"
+	unsafe "unsafe"
 )
 
 type TestAllExtensions struct {
@@ -60,9 +61,9 @@ func (b0 TestAllExtensions_builder) Build() *TestAllExtensions {
 
 type OptionalGroup struct {
 	state                            protoimpl.MessageState           `protogen:"opaque.v1"`
-	xxx_hidden_A                     int32                            `protobuf:"varint,17,opt,name=a" json:"a,omitempty"`
-	xxx_hidden_SameFieldNumber       int32                            `protobuf:"varint,16,opt,name=same_field_number,json=sameFieldNumber" json:"same_field_number,omitempty"`
-	xxx_hidden_OptionalNestedMessage *TestAllExtensions_NestedMessage `protobuf:"bytes,1000,opt,name=optional_nested_message,json=optionalNestedMessage" json:"optional_nested_message,omitempty"`
+	xxx_hidden_A                     int32                            `protobuf:"varint,17,opt,name=a"`
+	xxx_hidden_SameFieldNumber       int32                            `protobuf:"varint,16,opt,name=same_field_number,json=sameFieldNumber"`
+	xxx_hidden_OptionalNestedMessage *TestAllExtensions_NestedMessage `protobuf:"bytes,1000,opt,name=optional_nested_message,json=optionalNestedMessage"`
 	XXX_raceDetectHookData           protoimpl.RaceDetectHookData
 	XXX_presence                     [1]uint32
 	unknownFields                    protoimpl.UnknownFields
@@ -190,8 +191,8 @@ func (b0 OptionalGroup_builder) Build() *OptionalGroup {
 
 type RepeatedGroup struct {
 	state                            protoimpl.MessageState           `protogen:"opaque.v1"`
-	xxx_hidden_A                     int32                            `protobuf:"varint,47,opt,name=a" json:"a,omitempty"`
-	xxx_hidden_OptionalNestedMessage *TestAllExtensions_NestedMessage `protobuf:"bytes,1001,opt,name=optional_nested_message,json=optionalNestedMessage" json:"optional_nested_message,omitempty"`
+	xxx_hidden_A                     int32                            `protobuf:"varint,47,opt,name=a"`
+	xxx_hidden_OptionalNestedMessage *TestAllExtensions_NestedMessage `protobuf:"bytes,1001,opt,name=optional_nested_message,json=optionalNestedMessage"`
 	XXX_raceDetectHookData           protoimpl.RaceDetectHookData
 	XXX_presence                     [1]uint32
 	unknownFields                    protoimpl.UnknownFields
@@ -377,8 +378,8 @@ func (b0 RepeatedFieldEncoding_builder) Build() *RepeatedFieldEncoding {
 
 type TestAllExtensions_NestedMessage struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_A           int32                  `protobuf:"varint,1,opt,name=a" json:"a,omitempty"`
-	xxx_hidden_Corecursive *TestAllExtensions     `protobuf:"bytes,2,opt,name=corecursive" json:"corecursive,omitempty"`
+	xxx_hidden_A           int32                  `protobuf:"varint,1,opt,name=a"`
+	xxx_hidden_Corecursive *TestAllExtensions     `protobuf:"bytes,2,opt,name=corecursive"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -1058,7 +1059,7 @@ var (
 
 var File_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_rawDesc = []byte{
+var file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_rawDesc = string([]byte{
 	0x0a, 0x50, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f,
 	0x6e, 0x73, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x5f,
@@ -1496,7 +1497,7 @@ var file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opa
 	0x73, 0x74, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x5f, 0x6f, 0x70, 0x61, 0x71, 0x75,
 	0x65, 0x92, 0x03, 0x09, 0xd2, 0x3e, 0x02, 0x10, 0x03, 0x18, 0x02, 0x20, 0x03, 0x62, 0x08, 0x65,
 	0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x70, 0xe8, 0x07,
-}
+})
 
 var file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_goTypes = []any{
@@ -1597,7 +1598,7 @@ func file_internal_testprotos_testeditions_testeditions_opaque_test_extension_op
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_rawDesc), len(file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 57,
@@ -1609,7 +1610,6 @@ func file_internal_testprotos_testeditions_testeditions_opaque_test_extension_op
 		ExtensionInfos:    file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_extTypes,
 	}.Build()
 	File_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto = out.File
-	file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_rawDesc = nil
 	file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_goTypes = nil
 	file_internal_testprotos_testeditions_testeditions_opaque_test_extension_opaque_proto_depIdxs = nil
 }

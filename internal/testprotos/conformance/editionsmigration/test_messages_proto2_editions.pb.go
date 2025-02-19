@@ -21,6 +21,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type ForeignEnumProto2 int32
@@ -2828,7 +2829,7 @@ var (
 
 var File_editions_golden_test_messages_proto2_editions_proto protoreflect.FileDescriptor
 
-var file_editions_golden_test_messages_proto2_editions_proto_rawDesc = []byte{
+var file_editions_golden_test_messages_proto2_editions_proto_rawDesc = string([]byte{
 	0x0a, 0x33, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x67, 0x6f, 0x6c, 0x64, 0x65,
 	0x6e, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x5f,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0x5f, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e,
@@ -3832,16 +3833,16 @@ var file_editions_golden_test_messages_proto2_editions_proto_rawDesc = []byte{
 	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0x92, 0x03, 0x06, 0x10, 0x02,
 	0x18, 0x02, 0x20, 0x03, 0x62, 0x08, 0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x70, 0xe8,
 	0x07,
-}
+})
 
 var (
 	file_editions_golden_test_messages_proto2_editions_proto_rawDescOnce sync.Once
-	file_editions_golden_test_messages_proto2_editions_proto_rawDescData = file_editions_golden_test_messages_proto2_editions_proto_rawDesc
+	file_editions_golden_test_messages_proto2_editions_proto_rawDescData []byte
 )
 
 func file_editions_golden_test_messages_proto2_editions_proto_rawDescGZIP() []byte {
 	file_editions_golden_test_messages_proto2_editions_proto_rawDescOnce.Do(func() {
-		file_editions_golden_test_messages_proto2_editions_proto_rawDescData = protoimpl.X.CompressGZIP(file_editions_golden_test_messages_proto2_editions_proto_rawDescData)
+		file_editions_golden_test_messages_proto2_editions_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_editions_golden_test_messages_proto2_editions_proto_rawDesc), len(file_editions_golden_test_messages_proto2_editions_proto_rawDesc)))
 	})
 	return file_editions_golden_test_messages_proto2_editions_proto_rawDescData
 }
@@ -3983,7 +3984,7 @@ func file_editions_golden_test_messages_proto2_editions_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_editions_golden_test_messages_proto2_editions_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_editions_golden_test_messages_proto2_editions_proto_rawDesc), len(file_editions_golden_test_messages_proto2_editions_proto_rawDesc)),
 			NumEnums:      4,
 			NumMessages:   40,
 			NumExtensions: 6,
@@ -3996,7 +3997,6 @@ func file_editions_golden_test_messages_proto2_editions_proto_init() {
 		ExtensionInfos:    file_editions_golden_test_messages_proto2_editions_proto_extTypes,
 	}.Build()
 	File_editions_golden_test_messages_proto2_editions_proto = out.File
-	file_editions_golden_test_messages_proto2_editions_proto_rawDesc = nil
 	file_editions_golden_test_messages_proto2_editions_proto_goTypes = nil
 	file_editions_golden_test_messages_proto2_editions_proto_depIdxs = nil
 }

@@ -14,11 +14,12 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/gofeaturespb"
 	reflect "reflect"
+	unsafe "unsafe"
 )
 
 type Int32 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           int32                  `protobuf:"varint,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           int32                  `protobuf:"varint,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -93,7 +94,7 @@ func (b0 Int32_builder) Build() *Int32 {
 
 type Int64 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           int64                  `protobuf:"varint,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           int64                  `protobuf:"varint,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -168,7 +169,7 @@ func (b0 Int64_builder) Build() *Int64 {
 
 type Uint32 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           uint32                 `protobuf:"varint,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           uint32                 `protobuf:"varint,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -243,7 +244,7 @@ func (b0 Uint32_builder) Build() *Uint32 {
 
 type Uint64 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           uint64                 `protobuf:"varint,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           uint64                 `protobuf:"varint,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -318,7 +319,7 @@ func (b0 Uint64_builder) Build() *Uint64 {
 
 type Sint32 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           int32                  `protobuf:"zigzag32,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           int32                  `protobuf:"zigzag32,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -393,7 +394,7 @@ func (b0 Sint32_builder) Build() *Sint32 {
 
 type Sint64 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           int64                  `protobuf:"zigzag64,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           int64                  `protobuf:"zigzag64,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -468,7 +469,7 @@ func (b0 Sint64_builder) Build() *Sint64 {
 
 type Fixed32 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           uint32                 `protobuf:"fixed32,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           uint32                 `protobuf:"fixed32,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -543,7 +544,7 @@ func (b0 Fixed32_builder) Build() *Fixed32 {
 
 type Fixed64 struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           uint64                 `protobuf:"fixed64,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           uint64                 `protobuf:"fixed64,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -618,7 +619,7 @@ func (b0 Fixed64_builder) Build() *Fixed64 {
 
 type Float struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           float32                `protobuf:"fixed32,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           float32                `protobuf:"fixed32,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -693,7 +694,7 @@ func (b0 Float_builder) Build() *Float {
 
 type Double struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           float64                `protobuf:"fixed64,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           float64                `protobuf:"fixed64,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -768,7 +769,7 @@ func (b0 Double_builder) Build() *Double {
 
 type Bool struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           bool                   `protobuf:"varint,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           bool                   `protobuf:"varint,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -843,7 +844,7 @@ func (b0 Bool_builder) Build() *Bool {
 
 type String struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           *string                `protobuf:"bytes,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           *string                `protobuf:"bytes,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -921,7 +922,7 @@ func (b0 String_builder) Build() *String {
 
 type Bytes struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           []byte                 `protobuf:"bytes,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V           []byte                 `protobuf:"bytes,1,req,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -999,7 +1000,7 @@ func (b0 Bytes_builder) Build() *Bytes {
 
 type Message struct {
 	state         protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V  *Message_M             `protobuf:"bytes,1,req,name=v" json:"v,omitempty"`
+	xxx_hidden_V  *Message_M             `protobuf:"bytes,1,req,name=v"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1067,7 +1068,7 @@ func (b0 Message_builder) Build() *Message {
 
 type Group struct {
 	state            protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_Group *Group_Group           `protobuf:"group,1,req,name=Group,json=group" json:"group,omitempty"`
+	xxx_hidden_Group *Group_Group           `protobuf:"group,1,req,name=Group,json=group"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -1178,7 +1179,7 @@ func (b0 Message_M_builder) Build() *Message_M {
 
 type Group_Group struct {
 	state                  protoimpl.MessageState `protogen:"opaque.v1"`
-	xxx_hidden_V           int32                  `protobuf:"varint,1,opt,name=v" json:"v,omitempty"`
+	xxx_hidden_V           int32                  `protobuf:"varint,1,opt,name=v"`
 	XXX_raceDetectHookData protoimpl.RaceDetectHookData
 	XXX_presence           [1]uint32
 	unknownFields          protoimpl.UnknownFields
@@ -1253,7 +1254,7 @@ func (b0 Group_Group_builder) Build() *Group_Group {
 
 var File_internal_testprotos_required_required_hybrid_required_hybrid_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_required_required_hybrid_required_hybrid_proto_rawDesc = []byte{
+var file_internal_testprotos_required_required_hybrid_required_hybrid_proto_rawDesc = string([]byte{
 	0x0a, 0x42, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x64, 0x2f, 0x72,
 	0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x64, 0x5f, 0x68, 0x79, 0x62, 0x72, 0x69, 0x64, 0x2f, 0x72,
@@ -1306,7 +1307,7 @@ var file_internal_testprotos_required_required_hybrid_required_hybrid_proto_rawD
 	0x71, 0x75, 0x69, 0x72, 0x65, 0x64, 0x2f, 0x72, 0x65, 0x71, 0x75, 0x69, 0x72, 0x65, 0x64, 0x5f,
 	0x68, 0x79, 0x62, 0x72, 0x69, 0x64, 0x92, 0x03, 0x05, 0xd2, 0x3e, 0x02, 0x10, 0x02, 0x62, 0x08,
 	0x65, 0x64, 0x69, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x70, 0xe8, 0x07,
-}
+})
 
 var file_internal_testprotos_required_required_hybrid_required_hybrid_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_internal_testprotos_required_required_hybrid_required_hybrid_proto_goTypes = []any{
@@ -1347,7 +1348,7 @@ func file_internal_testprotos_required_required_hybrid_required_hybrid_proto_ini
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_required_required_hybrid_required_hybrid_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_required_required_hybrid_required_hybrid_proto_rawDesc), len(file_internal_testprotos_required_required_hybrid_required_hybrid_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   17,
 			NumExtensions: 0,
@@ -1358,7 +1359,6 @@ func file_internal_testprotos_required_required_hybrid_required_hybrid_proto_ini
 		MessageInfos:      file_internal_testprotos_required_required_hybrid_required_hybrid_proto_msgTypes,
 	}.Build()
 	File_internal_testprotos_required_required_hybrid_required_hybrid_proto = out.File
-	file_internal_testprotos_required_required_hybrid_required_hybrid_proto_rawDesc = nil
 	file_internal_testprotos_required_required_hybrid_required_hybrid_proto_goTypes = nil
 	file_internal_testprotos_required_required_hybrid_required_hybrid_proto_depIdxs = nil
 }

@@ -12,6 +12,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+	unsafe "unsafe"
 )
 
 type Node struct {
@@ -180,7 +181,7 @@ func (x *Node) GetBytes() []byte {
 
 var File_internal_testprotos_lazy_lazy_tree_proto protoreflect.FileDescriptor
 
-var file_internal_testprotos_lazy_lazy_tree_proto_rawDesc = []byte{
+var file_internal_testprotos_lazy_lazy_tree_proto_rawDesc = string([]byte{
 	0x0a, 0x28, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x6c, 0x61, 0x7a, 0x79, 0x2f, 0x6c, 0x61, 0x7a, 0x79, 0x5f,
 	0x74, 0x72, 0x65, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x09, 0x6c, 0x61, 0x7a, 0x79,
@@ -215,16 +216,16 @@ var file_internal_testprotos_lazy_lazy_tree_proto_rawDesc = []byte{
 	0x66, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x6c, 0x61, 0x7a, 0x79, 0x62, 0x08, 0x65, 0x64, 0x69, 0x74,
 	0x69, 0x6f, 0x6e, 0x73, 0x70, 0xe8, 0x07,
-}
+})
 
 var (
 	file_internal_testprotos_lazy_lazy_tree_proto_rawDescOnce sync.Once
-	file_internal_testprotos_lazy_lazy_tree_proto_rawDescData = file_internal_testprotos_lazy_lazy_tree_proto_rawDesc
+	file_internal_testprotos_lazy_lazy_tree_proto_rawDescData []byte
 )
 
 func file_internal_testprotos_lazy_lazy_tree_proto_rawDescGZIP() []byte {
 	file_internal_testprotos_lazy_lazy_tree_proto_rawDescOnce.Do(func() {
-		file_internal_testprotos_lazy_lazy_tree_proto_rawDescData = protoimpl.X.CompressGZIP(file_internal_testprotos_lazy_lazy_tree_proto_rawDescData)
+		file_internal_testprotos_lazy_lazy_tree_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_internal_testprotos_lazy_lazy_tree_proto_rawDesc), len(file_internal_testprotos_lazy_lazy_tree_proto_rawDesc)))
 	})
 	return file_internal_testprotos_lazy_lazy_tree_proto_rawDescData
 }
@@ -251,7 +252,7 @@ func file_internal_testprotos_lazy_lazy_tree_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_internal_testprotos_lazy_lazy_tree_proto_rawDesc,
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_internal_testprotos_lazy_lazy_tree_proto_rawDesc), len(file_internal_testprotos_lazy_lazy_tree_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
@@ -262,7 +263,6 @@ func file_internal_testprotos_lazy_lazy_tree_proto_init() {
 		MessageInfos:      file_internal_testprotos_lazy_lazy_tree_proto_msgTypes,
 	}.Build()
 	File_internal_testprotos_lazy_lazy_tree_proto = out.File
-	file_internal_testprotos_lazy_lazy_tree_proto_rawDesc = nil
 	file_internal_testprotos_lazy_lazy_tree_proto_goTypes = nil
 	file_internal_testprotos_lazy_lazy_tree_proto_depIdxs = nil
 }
